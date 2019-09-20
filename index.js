@@ -24,7 +24,7 @@ mongoose.connection.once('open', () => {
 var allowedOrigins = process.env.allowedOrigins.split(',');
 app.use(cors({
     origin: function (origin, callback) {
-        // allow requests with no origin 
+        // allow requests with no origin
         // (like mobile apps or curl requests)
         if (!origin) return callback(null, true);
 
@@ -40,7 +40,7 @@ app.use(cors({
 // bind express with graphql
 app.use('/graphql', graphqlHTTP({
     schema,
-    graphiql: false
+    graphiql: true
 }));
 app.use('/alivetracking', graphqlHTTP({
     schema,
